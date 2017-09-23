@@ -8,7 +8,7 @@ import java.util.Properties;
 public class MySqlConnect {
 
     private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/ourDbName";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Insurances";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     private static final String MAX_POOL = "100"; // return results limit

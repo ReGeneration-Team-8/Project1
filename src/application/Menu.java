@@ -1,5 +1,6 @@
 package application;
 
+import utilities.CsvHandler;
 import validation.CheckInput;
 
 import java.util.InputMismatchException;
@@ -75,8 +76,9 @@ public class Menu {
                 System.out.println("4");
                 break;
             case 5:
-                System.out.println("5");
-                break;
+                CsvHandler csvHandler = new CsvHandler();
+                csvHandler.readCsv();
+                System.out.println("Pame gia pitsa");
         }
     }
 

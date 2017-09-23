@@ -13,18 +13,34 @@ public class DbHandler {
 
     // queries for owners table
     /* insert statement using prepared statements */
-    public void insertOwner(String fname, String lname, String ownerId, String phone, String address)
+    public void insertVehicle(String plate, String activationDate, String ownerId)
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
-        String insertOwnerSql = "INSERT  INTO owners (ownerId, firstName, lastName, phone, address) VALUES (?,?,?,?,?) ";
+        String insertVehicleSql = "INSERT  INTO Vehicles (plate, activationDate, ownerId) VALUES (?,?,?) ";
+        try {
+            mySqlConnect.connect().setAutoCommit(false);
+            PreparedStatement insertVehiclePrepared = mySqlConnect.connect().prepareStatement(insertVehicleSql);
+            insertVehiclePrepared.setString(1, plate);
+            insertVehiclePrepared.setString(2, activationDate);
+            insertVehiclePrepared.setString(3, ownerId);
+            insertVehiclePrepared.executeUpdate();
+            mySqlConnect.connect().commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void insertOwner(String ownerId, String firstName, String lastName)
+    {
+        MySqlConnect mySqlConnect = new MySqlConnect();
+        String insertOwnerSql = "INSERT  INTO Owners (ownerId, firstName, lastName) VALUES (?,?,?) ";
         try {
             mySqlConnect.connect().setAutoCommit(false);
             PreparedStatement insertOwnerPrepared = mySqlConnect.connect().prepareStatement(insertOwnerSql);
             insertOwnerPrepared.setString(1, ownerId);
-            insertOwnerPrepared.setString(2, fname);
-            insertOwnerPrepared.setString(3, lname);
-            insertOwnerPrepared.setString(4, phone);
-            insertOwnerPrepared.setString(5, address);
+            insertOwnerPrepared.setString(2, firstName);
+            insertOwnerPrepared.setString(3, lastName);
             insertOwnerPrepared.executeUpdate();
             mySqlConnect.connect().commit();
         } catch (SQLException e) {
