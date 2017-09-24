@@ -11,7 +11,7 @@ public class CheckInput {
     public boolean matchPlate() {
         str = sc.nextLine().toUpperCase();
         if (str.matches("^[A-Z]{3}\\-[1-9][0-9]{3}$")) {
-            System.out.println("you have entered a valid plate number");
+            System.out.println("You have entered a valid plate number");
             return true;
         }else{
             return false;
@@ -34,5 +34,17 @@ public class CheckInput {
             returnValue = Integer.parseInt(str);
         }
         return returnValue;
+    }
+
+    public String getStr(){
+        return str;
+    }
+
+    public int matchTimeFrame(int timeFrame){
+        if (timeFrame < 0) {
+            System.out.println("Give number of days (positive)");
+            timeFrame = -1;
+        }
+        return timeFrame;
     }
 }

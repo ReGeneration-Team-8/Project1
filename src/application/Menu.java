@@ -1,8 +1,14 @@
 package application;
 
+import database.DbHandler;
 import utilities.CsvHandler;
+import utilities.DateCalculations;
 import validation.CheckInput;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,7 +18,8 @@ public class Menu {
     int choice2;
     boolean isTrue = false;
     private CheckInput check = new CheckInput();
-
+    private DbHandler dbHandler = new DbHandler();
+    private boolean exitStatus = true;
     public void menuPrint(){
 
         System.out.println("==============================");
@@ -46,8 +53,26 @@ public class Menu {
                     System.out.println("Enter the plate number");
                     isTrue = check.matchPlate();
                 }while(isTrue == false);
+                String status = dbHandler.getActivationDate(check.getStr());
+                System.out.println(status);
                 break;
             case 2:
+                int timeFrame = 0;
+                do{
+                    System.out.println("Give a valid timeframe");
+                    Scanner inputTimeFrame = new Scanner(System.in);
+                    int timeToCheck = 0;
+                    try{
+                        timeToCheck = inputTimeFrame.nextInt();
+                        timeFrame = check.matchTimeFrame(timeToCheck);
+                    }
+                    catch (InputMismatchException nfe) {
+                        System.out.println("You have entered a non numeric field value");
+                        timeFrame = -1;
+                    }
+                }while(timeFrame == -1);
+                dbHandler.getActivationDates(timeFrame);
+                System.out.println("\nThere are " + dbHandler.getList().size() + " uninsured vehicles\n");
                 System.out.println("==============================");
                 System.out.println("|        Export Format       |");
                 System.out.println("==============================");
@@ -68,18 +93,66 @@ public class Menu {
                     System.out.println("Try again, we need a number between 1 and 2");
                     choice2 = check.matchInt2();
                 }
+                if(choice2 == 1){
+                    for (String plate:dbHandler.getList()){
+                        System.out.println(plate);
+                    }
+                    dbHandler.getList().clear();
+                }else{
+                    BufferedWriter br = null;
+                    try {
+                        br = new BufferedWriter(new FileWriter("UninsuredVehicles.csv"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    StringBuilder sb = new StringBuilder();
+                    for (String plate:dbHandler.getList()) {
+                        sb.append(plate);
+                        sb.append("\n");
+                    }
+
+                    try {
+                        br.write(sb.toString());
+                        br.close();
+                        dbHandler.getList().clear();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    finally {
+                        try {
+                            br.close(); // close will automatically flush the data
+                            dbHandler.getList().clear();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
                 break;
+
             case 3:
                 System.out.println("3");
                 break;
             case 4:
-                System.out.println("4");
-                break;
-            case 5:
                 CsvHandler csvHandler = new CsvHandler();
                 csvHandler.readCsv();
                 System.out.println("Pame gia pitsa");
+                break;
+            case 5:
+                System.out.println("You 're done\nExit");
+                exitStatus = false;
+                break;
+
+            case 6:
+              //  CsvHandler csvHandler = new CsvHandler();
+              //  csvHandler.readCsv();
+              //  System.out.println("Pame gia pitsa");
+                break;
         }
     }
 
+    public boolean getExitStatus(){
+        return exitStatus;
+    }
 }

@@ -28,7 +28,7 @@ public class CsvHandler {
                     if (line != null)
                     {
                         String[] array = line.split(";+");
-                        System.out.println(array.length);
+                        //System.out.println(array.length);
                         if(distinctOwnerId.isEmpty()) {
                             String rndName = nameGeneration.randomIdentifier();
                             String rndLastName = nameGeneration.randomIdentifier();
