@@ -48,6 +48,8 @@ public class Menu {
             choice = check.matchInt();
         }
         switch (choice) {
+
+
             case 1:
                 do {
                     System.out.println("Enter the plate number");
@@ -56,6 +58,9 @@ public class Menu {
                 String status = dbHandler.getActivationDate(check.getStr());
                 System.out.println(status);
                 break;
+
+
+
             case 2:
                 int timeFrame = 0;
                 do{
@@ -128,29 +133,41 @@ public class Menu {
                         }
                     }
                 }
-
                 break;
+
+
 
             case 3:
-                System.out.println("3");
+                System.out.println("Plate numbers in alphanumerical order\n");
+                String getPlate = dbHandler.getPlate();
+                for (String plate:dbHandler.getListOfPlates()){
+                    System.out.println(plate);
+                }
+                dbHandler.getListOfPlates().clear();
                 break;
+
+
+
             case 4:
                 CsvHandler csvHandler = new CsvHandler();
                 csvHandler.readCsv();
                 System.out.println("Pame gia pitsa");
                 break;
+
+
+
             case 5:
                 System.out.println("You 're done\nExit");
                 exitStatus = false;
                 break;
 
+
+
             case 6:
-              //  CsvHandler csvHandler = new CsvHandler();
-              //  csvHandler.readCsv();
-              //  System.out.println("Pame gia pitsa");
                 break;
         }
     }
+
 
     public boolean getExitStatus(){
         return exitStatus;

@@ -1,33 +1,39 @@
 package utilities;
 
+import java.util.ArrayList;
+
 public class Sort {
 
-    public String[] sortPlates(String[] plates)
+    public static void bubbleSort(ArrayList<String> list)
     {
-        int checkNum = 0;
-
-        outer:
-        for(int i = 0; i<plates.length; i++)
+        String temp;
+        for (int i = 0; i < list.size(); i++)
         {
-            for(int j=i+1; j<plates.length; j++)
-            {
-                checkNum = plates[i].compareTo(plates[j]);
-                if(checkNum > 0)
+            for (int j = 0; j < list.size() - i -1; j++) {
+                if (compare(list.get(j), list.get(j+1)) == 1)
                 {
-                    String tempPlate = plates[i];
-                    plates[i] = plates[j];
-                    plates[j] = tempPlate;
+                    temp = list.get(j);
+                    list.set(j,list.get(j+1) );
+                    list.set(j+1, temp);
                 }
-                else
-                    continue outer;
             }
         }
-        for(int i=0; i<plates.length; i++)
-        {
-            System.out.println(plates[i]);
+    }
+
+    public static int compare(String s1, String s2){
+        int result = 0;
+        for (int i = 0; i < s1.length(); i++){
+            int a = s1.charAt(i);
+            int b = s2.charAt(i);
+            if(a < b){
+                result = -1;
+                break;
+            }
+            else if(a > b){
+                result = 1;
+                break;
+            }
         }
-        return plates;
-    }// ens sort plates
-
+        return result;
+    }
 }
-

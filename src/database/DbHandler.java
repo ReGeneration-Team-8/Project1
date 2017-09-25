@@ -1,8 +1,8 @@
 package database;
 
-//import validation.CheckInput;
-//import ErrorHandling.Validator;
+
 import utilities.DateCalculations;
+import utilities.Sort;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +15,7 @@ import java.util.List;
 public class DbHandler {
 
     private List<String> expiredPlates = new ArrayList<String>();
+    private List<String> plateList = new ArrayList<>();
     // queries for owners table
     /* insert statement using prepared statements */
 
@@ -78,7 +79,6 @@ public class DbHandler {
             e.printStackTrace();
             return "error - not found";
         }
-
     }
 
     public String getActivationDates(int timeFrame)
@@ -115,8 +115,39 @@ public class DbHandler {
         }
     }
 
+
+    public String getPlate()
+    {
+        MySqlConnect mySqlConnect = new MySqlConnect();
+        String getPlateSql = "SELECT plate FROM vehicles ORDER BY ownerId";
+        String plate = "";
+        try {
+            mySqlConnect.connect().setAutoCommit(false);
+            Statement stmt = mySqlConnect.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(getPlateSql);
+
+            while(rs.next())
+            {
+                plate = rs.getString("plate");
+                plateList.add(plate);
+            }
+            Sort sorting = new Sort();
+            sorting.bubbleSort((ArrayList<String>) plateList);
+            mySqlConnect.connect().commit();
+            return plate;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "error - not found";
+        }
+
+    }
+
     public List<String> getList(){
         return expiredPlates;
+    }
+
+    public List<String> getListOfPlates(){
+        return plateList;
     }
 
 }
