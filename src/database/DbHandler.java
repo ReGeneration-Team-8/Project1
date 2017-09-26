@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -143,6 +144,52 @@ public class DbHandler {
             //return "error - not found";
         }
 
+    }
+
+
+    public void getVehicles(double fine)
+    {
+        MySqlConnect mySqlConnect = new MySqlConnect();
+        String getVehiclesSql = "SELECT * FROM vehicles ORDER BY ownerId";
+        String plate = "";
+        String ownerId = "";
+        String activationDate = "";
+        String insuranceStatus = "";
+        String expiredPlate = "";
+        String tempOwnerId = "";
+        int counter = 1;
+        try {
+            mySqlConnect.connect().setAutoCommit(false);
+            Statement stmt = mySqlConnect.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(getVehiclesSql);
+            DateCalculations dateCalculations = new DateCalculations();
+            while(rs.next())
+            {
+                activationDate = rs.getString("activationDate");
+                expiredPlate = rs.getString("plate");
+                ownerId = rs.getString("ownerId");
+                String expirationDate = dateCalculations.calculateExpirationDate(activationDate);
+                insuranceStatus = dateCalculations.compareDates(expirationDate);
+                if (insuranceStatus.equals("Your insurance has been expired today at 12:00") ||
+                        insuranceStatus.equals("Your insurance has been expired")){
+                    if(tempOwnerId.equals(""))
+                    {tempOwnerId = ownerId;}
+                    else if(tempOwnerId.equals(ownerId)) {
+                        counter++;
+                    }
+                    else
+                    {
+                        System.out.println("The owner with SCN: "+ tempOwnerId + "has to pay " + counter*fine +
+                                " bitcoins for his uninsured vehicles");
+                        tempOwnerId = ownerId;
+                        counter = 1;
+                    }
+                }
+            }
+            mySqlConnect.connect().commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

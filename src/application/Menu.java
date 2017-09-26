@@ -151,8 +151,12 @@ public class Menu {
                 dbHandler.getListOfPlates().clear();
                 break;
             case 4:
-                csvHandler.readCsv();
-                System.out.println("Pame gia pitsa");
+                System.out.println("Give me the default fine number");
+                Scanner scFine = new Scanner(System.in);
+                double fine = scFine.nextDouble();
+                dbHandler.getVehicles(fine);
+                /*csvHandler.readCsv();
+                System.out.println("Pame gia pitsa");*/
                 break;
             case 5:
                 System.out.println("You 're done\nExit");
