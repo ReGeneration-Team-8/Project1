@@ -7,13 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CsvHandler {
 
     private DbHandler dbHandler;
     private NameGeneration nameGeneration;
+    private DateCalculations dateCalculations = new DateCalculations();
+    private List<String> expiredPlates = new ArrayList<String>();
 
     public void readCsv () {
         dbHandler = new DbHandler();
@@ -56,4 +60,85 @@ public class CsvHandler {
 
         }
     } //End of Method
-}
+
+    //added yesterday *********************************
+    //checks the csv to validate the plate
+    public void validatePlateFromCsv(String plateToValidate) {
+        String validationResult = "";
+        try {
+            BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
+            String line = "";
+            try {
+                System.out.println("validating plate from csv");
+                while ((line = bReader.readLine()) != null) {
+                    if (line != null)
+                    {
+                        String[] array = line.split(";+");
+                        if(plateToValidate.equals(array[0].toUpperCase()))//checks if exists in csv,validates and exits the loop
+                        {
+                            System.out.println("plate was found...wait for validation");
+                            String expirationDateTocheck = dateCalculations.calculateExpirationDate(array[2]);
+                            validationResult = dateCalculations.compareDates(expirationDateTocheck);
+                            System.out.println(validationResult);
+                            break;
+                        }
+                    }//end if
+                }
+                if(validationResult.equals(""))
+                {
+                    validationResult = "plate not found!";
+                    System.out.println(validationResult);
+                }
+                if (bReader == null)
+                {
+                    bReader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException nf) {
+            System.out.println("File Not Found");
+        }
+    } //End of readCsvAsDatabase Method
+
+    public void checkTimeframeExpirationFromCsv(int timeFrame) //added yesterday *********************************
+    {
+        try {
+            BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
+            String line = "";
+            String activationDate = "";
+            String expiredPlate = "";
+            String insuranceStatus = "";
+            try {
+                System.out.println("checking timeframe expiration from csv");
+                while ((line = bReader.readLine()) != null) {
+                    if (line != null)
+                    {
+                        String[] array = line.split(";+");
+                        activationDate = array[2];
+                        expiredPlate = array[0];
+                        String expirationDate = dateCalculations.calculateExpirationDate(activationDate);
+                        insuranceStatus = dateCalculations.compareDates(timeFrame, expirationDate);
+                        if (insuranceStatus.equals("expired")){
+                            expiredPlates.add(expiredPlate);
+                        }
+                    }//end if
+                }
+                if (bReader == null)
+                {
+                    bReader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException nf) {
+            System.out.println("File Not Found");
+        }
+    }
+
+    public List<String> getList(){
+        return expiredPlates;
+    }//added yesterday *********************************
+
+
+}//end of class

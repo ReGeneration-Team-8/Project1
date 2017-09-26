@@ -19,7 +19,9 @@ public class Menu {
     boolean isTrue = false;
     private CheckInput check = new CheckInput();
     private DbHandler dbHandler = new DbHandler();
+    private CsvHandler csvHandler = new CsvHandler();//we use it on 1 and 4,(the change i made) - //added yesterday *********************************
     private boolean exitStatus = true;
+
     public void menuPrint(){
 
         System.out.println("==============================");
@@ -48,8 +50,6 @@ public class Menu {
             choice = check.matchInt();
         }
         switch (choice) {
-
-
             case 1:
                 do {
                     System.out.println("Enter the plate number");
@@ -57,10 +57,8 @@ public class Menu {
                 }while(isTrue == false);
                 String status = dbHandler.getActivationDate(check.getStr());
                 System.out.println(status);
+                csvHandler.validatePlateFromCsv(check.getStr());//added yesterday *********************************
                 break;
-
-
-
             case 2:
                 int timeFrame = 0;
                 do{
@@ -77,6 +75,7 @@ public class Menu {
                     }
                 }while(timeFrame == -1);
                 dbHandler.getActivationDates(timeFrame);
+                csvHandler.checkTimeframeExpirationFromCsv(timeFrame);// added yesterday ************************************
                 System.out.println("\nThere are " + dbHandler.getList().size() + " uninsured vehicles\n");
                 System.out.println("==============================");
                 System.out.println("|        Export Format       |");
@@ -103,6 +102,13 @@ public class Menu {
                         System.out.println(plate);
                     }
                     dbHandler.getList().clear();
+                    // added yesterday *****************************************************************
+                    System.out.println("\nNow printing results based on the same timeframe afte checking csv data :\n");
+                    for (String plate:csvHandler.getList()){
+                        System.out.println(plate);
+                    }
+                    csvHandler.getList().clear();
+                    // end of yesterday's additions *******************************************************
                 }else{
                     BufferedWriter br = null;
                     try {
@@ -133,9 +139,8 @@ public class Menu {
                         }
                     }
                 }
+
                 break;
-
-
 
             case 3:
                 System.out.println("Plate numbers in alphanumerical order\n");
@@ -145,29 +150,22 @@ public class Menu {
                 }
                 dbHandler.getListOfPlates().clear();
                 break;
-
-
-
             case 4:
-                CsvHandler csvHandler = new CsvHandler();
                 csvHandler.readCsv();
                 System.out.println("Pame gia pitsa");
                 break;
-
-
-
             case 5:
                 System.out.println("You 're done\nExit");
                 exitStatus = false;
                 break;
 
-
-
             case 6:
+                //  CsvHandler csvHandler = new CsvHandler();
+                //  csvHandler.readCsv();
+                //  System.out.println("Pame gia pitsa");
                 break;
         }
     }
-
 
     public boolean getExitStatus(){
         return exitStatus;

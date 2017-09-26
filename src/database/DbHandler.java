@@ -1,6 +1,7 @@
 package database;
 
-
+//import validation.CheckInput;
+//import ErrorHandling.Validator;
 import utilities.DateCalculations;
 import utilities.Sort;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class DbHandler {
 
     private List<String> expiredPlates = new ArrayList<String>();
-    private List<String> plateList = new ArrayList<>();
+    private List<String> plateList = new ArrayList<String>();
     // queries for owners table
     /* insert statement using prepared statements */
 
@@ -55,7 +56,7 @@ public class DbHandler {
 
     }
 
-    public String getActivationDate(String plate)
+    public String getActivationDate(String plate)//now handles the case where the plate was not found in db
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String getActivationDateSql = "SELECT activationDate FROM vehicles WHERE plate = ?";
@@ -66,19 +67,25 @@ public class DbHandler {
             PreparedStatement getActivationDatePrepared = mySqlConnect.connect().prepareStatement(getActivationDateSql);
             getActivationDatePrepared.setString(1, plate);
             ResultSet rs = getActivationDatePrepared.executeQuery();
-            while(rs.next())
-            {
-                activationDate = rs.getString("activationDate");
+            if (!rs.isBeforeFirst() ) {//checks if result set is empty - //added yesterday *********************************
+                System.out.println("Plate not found in database");
             }
-            DateCalculations dateCalculations = new DateCalculations();
-            String expirationDate = dateCalculations.calculateExpirationDate(activationDate);
-            insuranceStatus = dateCalculations.compareDates(expirationDate);
-            mySqlConnect.connect().commit();
-            return insuranceStatus;
+            else
+            {
+                while(rs.next())
+                {
+                    activationDate = rs.getString("activationDate");
+                }
+                DateCalculations dateCalculations = new DateCalculations();
+                String expirationDate = dateCalculations.calculateExpirationDate(activationDate);
+                insuranceStatus = dateCalculations.compareDates(expirationDate);
+                mySqlConnect.connect().commit();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return "error - not found";
         }
+        return insuranceStatus;
     }
 
     public String getActivationDates(int timeFrame)
@@ -102,11 +109,8 @@ public class DbHandler {
                 insuranceStatus = dateCalculations.compareDates(timeFrame, expirationDate);
                 if (insuranceStatus.equals("expired")){
                     expiredPlates.add(expiredPlate);
-                  //  System.out.println(expiredPlate);
                 }
             }
-           // System.out.println("\nNumber of expired plates found: " + expiredPlates.size());
-
             mySqlConnect.connect().commit();
             return insuranceStatus;
         } catch (SQLException e) {
@@ -114,7 +118,6 @@ public class DbHandler {
             return "error - not found";
         }
     }
-
 
     public void getPlate()
     {
@@ -142,12 +145,13 @@ public class DbHandler {
 
     }
 
+
     public List<String> getList(){
         return expiredPlates;
     }
-
     public List<String> getListOfPlates(){
         return plateList;
     }
+
 
 }
