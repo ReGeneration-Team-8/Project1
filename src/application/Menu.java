@@ -45,7 +45,7 @@ public class Menu {
             System.out.println("You have entered a non numeric field value");
         }
 
-        while(choice < 1 || choice > 5){
+        while(choice < 1 || choice > 6){
             System.out.println("Try again, we need a number between 1 and 5");
             choice = check.matchInt();
         }
@@ -57,7 +57,8 @@ public class Menu {
                 }while(isTrue == false);
                 String status = dbHandler.getActivationDate(check.getStr());
                 System.out.println(status);
-                csvHandler.validatePlateFromCsv(check.getStr());//added yesterday *********************************
+                csvHandler.validatePlateFromCsv(check.getStr());
+                exitMessage();
                 break;
             case 2:
                 int timeFrame = 0;
@@ -75,7 +76,7 @@ public class Menu {
                     }
                 }while(timeFrame == -1);
                 dbHandler.getActivationDates(timeFrame);
-                csvHandler.checkTimeframeExpirationFromCsv(timeFrame);// added yesterday ************************************
+                csvHandler.checkTimeframeExpirationFromCsv(timeFrame);
                 System.out.println("\nThere are " + dbHandler.getList().size() + " uninsured vehicles\n");
                 System.out.println("==============================");
                 System.out.println("|        Export Format       |");
@@ -98,18 +99,21 @@ public class Menu {
                     choice2 = check.matchInt2();
                 }
                 if(choice2 == 1){
+                    int i= 1;
+                    System.out.println("\nDatabase results: \n");
                     for (String plate:dbHandler.getList()){
-                        System.out.println(plate);
+                        System.out.println(i + ". " + plate);
+                        i++;
                     }
+                    i=1;
                     dbHandler.getList().clear();
-                    // added yesterday *****************************************************************
-                    System.out.println("\nNow printing results based on the same timeframe afte checking csv data :\n");
+                    System.out.println("\nCsv results: \n");
                     for (String plate:csvHandler.getList()){
-                        System.out.println(plate);
+                        System.out.println(i + ". " + plate);
+                        i++;
                     }
                     csvHandler.getList().clear();
-                    // end of yesterday's additions *******************************************************
-                }else{
+                    }else{
                     BufferedWriter br = null;
                     try {
                         br = new BufferedWriter(new FileWriter("UninsuredVehicles.csv"));
@@ -139,7 +143,7 @@ public class Menu {
                         }
                     }
                 }
-
+                exitMessage();
                 break;
 
             case 3:
@@ -149,6 +153,7 @@ public class Menu {
                     System.out.println(plate);
                 }
                 dbHandler.getListOfPlates().clear();
+                exitMessage();
                 break;
             case 4:
                 System.out.println("Give me the default fine number");
@@ -157,6 +162,7 @@ public class Menu {
                 dbHandler.getVehicles(fine);
                 /*csvHandler.readCsv();
                 System.out.println("Pame gia pitsa");*/
+                exitMessage();
                 break;
             case 5:
                 System.out.println("You 're done\nExit");
@@ -164,9 +170,9 @@ public class Menu {
                 break;
 
             case 6:
-                //  CsvHandler csvHandler = new CsvHandler();
-                //  csvHandler.readCsv();
-                //  System.out.println("Pame gia pitsa");
+                CsvHandler csvHandler = new CsvHandler();
+                csvHandler.readCsv();
+                System.out.println("Pame gia pitsa");
                 break;
         }
     }
@@ -174,4 +180,12 @@ public class Menu {
     public boolean getExitStatus(){
         return exitStatus;
     }
+
+    private void exitMessage() {
+        System.out.println("\nPress any key to return to main menu...");
+        Scanner returnMenu = new Scanner(System.in);
+
+        returnMenu.next();
+    }
+
 }

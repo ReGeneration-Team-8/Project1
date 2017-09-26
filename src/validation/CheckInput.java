@@ -21,7 +21,7 @@ public class CheckInput {
     public int matchInt(){
         int returnValue = 0;
         str = sc.nextLine();
-        if (str.matches("^[1-5]$")) {
+        if (str.matches("^[1-6]$")) {
             returnValue = Integer.parseInt(str);
         }
         return returnValue;
