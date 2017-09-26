@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a77b7ed-0049-4f18-9f80-5ad57e4a2fc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/project_1_coding_school/application/Menu.class" afterPath="$PROJECT_DIR$/out/production/project_1_coding_school/application/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/project_1_coding_school/database/DbHandler.class" afterPath="$PROJECT_DIR$/out/production/project_1_coding_school/database/DbHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/project_1_coding_school/utilities/Sort.class" afterPath="$PROJECT_DIR$/out/production/project_1_coding_school/utilities/Sort.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Menu.java" afterPath="$PROJECT_DIR$/src/application/Menu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/DbHandler.java" afterPath="$PROJECT_DIR$/src/database/DbHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utilities/Sort.java" afterPath="$PROJECT_DIR$/src/utilities/Sort.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,52 +19,38 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/application/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+            <state relative-caret-position="0">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/application/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
+            <state relative-caret-position="125">
+              <caret line="141" column="16" lean-forward="false" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1506380493000" expanded="true" signature="6044:6049" ph="{...}" />
+                <marker date="1506380493000" expanded="true" signature="6026:6031" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sort.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/Sort.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="9" lean-forward="true" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DbHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DbHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="130" column="46" lean-forward="true" selection-start-line="130" selection-start-column="46" selection-end-line="130" selection-end-column="46" />
+            <state relative-caret-position="522">
+              <caret line="139" column="14" lean-forward="false" selection-start-line="139" selection-start-column="14" selection-end-line="139" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5530#5531#0" expanded="true" />
-                <element signature="e#5566#5567#0" expanded="true" />
-                <element signature="e#5610#5611#0" expanded="true" />
-                <element signature="e#5642#5643#0" expanded="true" />
-                <marker date="1506380152000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
-                <marker date="1506380152000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
-                <marker date="1506380152000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
-                <marker date="1506380152000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
-                <marker date="1506380152000" expanded="true" signature="4781:4824" ph="SELECT plate... vehicles" />
+                <marker date="1506381884000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
+                <marker date="1506381884000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
+                <marker date="1506381884000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
+                <marker date="1506381884000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
+                <marker date="1506381884000" expanded="true" signature="4779:4822" ph="SELECT plate... vehicles" />
               </folding>
             </state>
           </provider>
@@ -121,9 +103,9 @@
         <option value="$PROJECT_DIR$/src/utilities/DateCalculations.java" />
         <option value="$PROJECT_DIR$/src/validation/CheckInput.java" />
         <option value="$PROJECT_DIR$/src/application/Main.java" />
-        <option value="$PROJECT_DIR$/src/application/Menu.java" />
         <option value="$PROJECT_DIR$/src/utilities/sortTest.java" />
         <option value="$PROJECT_DIR$/src/utilities/Sort.java" />
+        <option value="$PROJECT_DIR$/src/application/Menu.java" />
         <option value="$PROJECT_DIR$/src/database/DbHandler.java" />
       </list>
     </option>
@@ -134,11 +116,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="562" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="2040" />
-    <option name="height" value="786" />
+    <option name="width" value="1440" />
+    <option name="height" value="827" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -158,6 +139,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,10 +192,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -363,15 +344,16 @@
       <workItem from="1506167697615" duration="1965000" />
       <workItem from="1506178315208" duration="1793000" />
       <workItem from="1506244902896" duration="15006000" />
-      <workItem from="1506369544125" duration="9043000" />
+      <workItem from="1506369544125" duration="9129000" />
+      <workItem from="1506416535583" duration="664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28894000" />
+    <option name="totallyTimeSpent" value="29644000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="23" width="1920" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="827" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -382,19 +364,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27459016" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27546778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744282" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20926517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21173105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -402,6 +384,35 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744282" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27459016" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650274" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21173105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -438,8 +449,12 @@
         <state relative-caret-position="2090">
           <caret line="119" column="5" lean-forward="true" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
           <folding>
-            <element signature="e#5530#5531#0" expanded="true" />
-            <element signature="e#5566#5567#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1506381884000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
+            <marker date="1506381884000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
+            <marker date="1506381884000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="4779:4822" ph="SELECT plate... vehicles" />
           </folding>
         </state>
       </provider>
@@ -458,9 +473,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -478,7 +491,7 @@
           <caret line="99" column="48" lean-forward="false" selection-start-line="99" selection-start-column="48" selection-end-line="99" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1506380493000" expanded="true" signature="6044:6049" ph="{...}" />
+            <marker date="1506380493000" expanded="true" signature="6026:6031" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -507,8 +520,12 @@
         <state relative-caret-position="304">
           <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
           <folding>
-            <element signature="e#5530#5531#0" expanded="true" />
-            <element signature="e#5566#5567#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1506381884000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
+            <marker date="1506381884000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
+            <marker date="1506381884000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="4779:4822" ph="SELECT plate... vehicles" />
           </folding>
         </state>
       </provider>
@@ -545,7 +562,7 @@
           <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1506380493000" expanded="true" signature="6044:6049" ph="{...}" />
+            <marker date="1506380493000" expanded="true" signature="6026:6031" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -554,9 +571,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -591,9 +606,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -798,14 +811,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/sortTest.java" />
     <entry file="file://$PROJECT_DIR$/src/database/MySqlConnect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -814,48 +820,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/sortTest.java">
+    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/Sort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="true" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+        <state relative-caret-position="190">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1506380493000" expanded="true" signature="6044:6049" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DbHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="130" column="46" lean-forward="true" selection-start-line="130" selection-start-column="46" selection-end-line="130" selection-end-column="46" />
+        <state relative-caret-position="522">
+          <caret line="139" column="14" lean-forward="false" selection-start-line="139" selection-start-column="14" selection-end-line="139" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5530#5531#0" expanded="true" />
-            <element signature="e#5566#5567#0" expanded="true" />
-            <element signature="e#5610#5611#0" expanded="true" />
-            <element signature="e#5642#5643#0" expanded="true" />
-            <marker date="1506380152000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
-            <marker date="1506380152000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
-            <marker date="1506380152000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
-            <marker date="1506380152000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
-            <marker date="1506380152000" expanded="true" signature="4781:4824" ph="SELECT plate... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="665:734" ph="INSERT INTO Vehicles" />
+            <marker date="1506381884000" expanded="true" signature="1454:1519" ph="INSERT INTO Owners" />
+            <marker date="1506381884000" expanded="true" signature="2202:2253" ph="SELECT activ... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="3374:3416" ph="SELECT plate... vehicles" />
+            <marker date="1506381884000" expanded="true" signature="4779:4822" ph="SELECT plate... vehicles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="141" column="16" lean-forward="false" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1506380493000" expanded="true" signature="6026:6031" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -116,7 +116,7 @@ public class DbHandler {
     }
 
 
-    public String getPlate()
+    public void getPlate()
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String getPlateSql = "SELECT plate FROM vehicles ORDER BY ownerId";
@@ -134,10 +134,10 @@ public class DbHandler {
             Sort sorting = new Sort();
             sorting.bubbleSort((ArrayList<String>) plateList);
             mySqlConnect.connect().commit();
-            return plate;
+            //return plate;
         } catch (SQLException e) {
             e.printStackTrace();
-            return "error - not found";
+            //return "error - not found";
         }
 
     }

@@ -139,7 +139,7 @@ public class Menu {
 
             case 3:
                 System.out.println("Plate numbers in alphanumerical order\n");
-                String getPlate = dbHandler.getPlate();
+                dbHandler.getPlate();
                 for (String plate:dbHandler.getListOfPlates()){
                     System.out.println(plate);
                 }
