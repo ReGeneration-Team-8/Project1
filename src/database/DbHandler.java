@@ -179,7 +179,7 @@ public class DbHandler {
                     }
                     else
                     {
-                        System.out.println("The owner with SCN: "+ tempOwnerId + "has to pay " + counter*fine +
+                        System.out.println("The owner with SCN: "+ tempOwnerId + " has to pay " + counter*fine +
                                 " bitcoins for his uninsured vehicles");
                         tempOwnerId = ownerId;
                         counter = 1;
