@@ -11,7 +11,7 @@ public class CheckInput {
     public boolean matchPlate() {
         str = sc.nextLine().toUpperCase();
         if (str.matches("^[A-Z]{3}\\-[1-9][0-9]{3}$")) {
-            System.out.println("You have entered a valid plate number");
+            System.out.println("You have entered a valid plate number\n");
             return true;
         }else{
             return false;
@@ -47,4 +47,6 @@ public class CheckInput {
         }
         return timeFrame;
     }
+
+
 }

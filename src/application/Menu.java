@@ -1,14 +1,13 @@
 package application;
 
 import database.DbHandler;
+import model.Vehicles;
 import utilities.CsvHandler;
-import utilities.DateCalculations;
 import validation.CheckInput;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -148,27 +147,48 @@ public class Menu {
 
             case 3:
                 System.out.println("Plate numbers in alphanumerical order\n");
-                dbHandler.getPlate();
+
+                /////////// for arraList of plates
+                /*dbHandler.getPlate();
                 for (String plate:dbHandler.getListOfPlates()){
                     System.out.println(plate);
                 }
                 dbHandler.getListOfPlates().clear();
+                exitMessage();*/
+
+                /////////// for arraList of objects of type Vehicles
+
+                dbHandler.getDataFromVehicles();
+                System.out.println("Plate Number\tSSN \t\t\tActivationDate\n");
+                for(Vehicles objectVehicle:dbHandler.getListOfVehicles()){
+                    System.out.println(objectVehicle.getPlate()+ "    \t" + objectVehicle.getOwnerId() + "\t\t" + objectVehicle.getActivationDate());
+                }
+                dbHandler.getListOfVehicles().clear();
                 exitMessage();
                 break;
             case 4:
+                double fine = -1;
                 System.out.println("Give me the default fine number");
-                Scanner scFine = new Scanner(System.in);
-                double fine = scFine.nextDouble();
-                dbHandler.getVehicles(fine);
-                /*csvHandler.readCsv();
-                System.out.println("Pame gia pitsa");*/
+                outer:
+                while (fine <0) {
+                    Scanner scFine = new Scanner(System.in);
+                    try{
+                        fine = scFine.nextDouble();
+                        if (fine < 0) {
+                            System.out.println("Enter a positive value");
+                            continue outer;
+                        }
+                        dbHandler.getVehicles(fine);
+                    }catch (InputMismatchException e){
+                        System.out.println("Please enter a valid fine");
+                    }
+                }
                 exitMessage();
                 break;
             case 5:
                 System.out.println("You 're done\nExit");
                 exitStatus = false;
                 break;
-
             case 6:
                 CsvHandler csvHandler = new CsvHandler();
                 csvHandler.readCsv();
@@ -184,7 +204,6 @@ public class Menu {
     private void exitMessage() {
         System.out.println("\nPress any key to return to main menu...");
         Scanner returnMenu = new Scanner(System.in);
-
         returnMenu.next();
     }
 

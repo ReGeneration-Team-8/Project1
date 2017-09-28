@@ -1,16 +1,16 @@
 package model;
 
-public class Vehicles {
+public class Vehicles implements Comparable{
 
     private String plate;
     private String activationDate;
-    private int ownerId;
+    private String ownerId;
 
-    public int getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
@@ -28,5 +28,33 @@ public class Vehicles {
 
     public void setActivationDate(String activationDate) {
         this.activationDate = activationDate;
+    }
+
+    private int compare(String s1, String s2){
+        int result = 0;
+        for (int i = 0; i < s1.length(); i++){
+            int a = s1.charAt(i);
+            int b = s2.charAt(i);
+            if(a < b){
+                result = -1;
+                break;
+            }
+            else if(a > b){
+                result = 1;
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        int result = 0;
+        try {
+            Vehicles v = (Vehicles) o;
+            result = compare(this.plate, v.getPlate());
+        }catch (ClassCastException e)
+        {e.printStackTrace();}
+        return result;
     }
 }

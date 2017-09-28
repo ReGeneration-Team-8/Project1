@@ -7,9 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class CsvHandler {
@@ -61,7 +59,6 @@ public class CsvHandler {
         }
     } //End of Method
 
-    //added yesterday *********************************
     //checks the csv to validate the plate
     public void validatePlateFromCsv(String plateToValidate) {
         String validationResult = "";
@@ -69,14 +66,14 @@ public class CsvHandler {
             BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
             String line = "";
             try {
-                System.out.println("validating plate from csv");
+                System.out.println("Validating plate from csv");
                 while ((line = bReader.readLine()) != null) {
                     if (line != null)
                     {
                         String[] array = line.split(";+");
                         if(plateToValidate.equals(array[0].toUpperCase()))//checks if exists in csv,validates and exits the loop
                         {
-                            System.out.println("plate was found...wait for validation");
+                            System.out.println("Plate was found...wait for validation");
                             String expirationDateTocheck = dateCalculations.calculateExpirationDate(array[2]);
                             validationResult = dateCalculations.compareDates(expirationDateTocheck);
                             System.out.println(validationResult);
@@ -86,7 +83,7 @@ public class CsvHandler {
                 }
                 if(validationResult.equals(""))
                 {
-                    validationResult = "plate not found!";
+                    validationResult = "Plate not found!";
                     System.out.println(validationResult);
                 }
                 if (bReader == null)
@@ -101,7 +98,7 @@ public class CsvHandler {
         }
     } //End of readCsvAsDatabase Method
 
-    public void checkTimeframeExpirationFromCsv(int timeFrame) //added yesterday *********************************
+    public void checkTimeframeExpirationFromCsv(int timeFrame)
     {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
@@ -110,7 +107,7 @@ public class CsvHandler {
             String expiredPlate = "";
             String insuranceStatus = "";
             try {
-                System.out.println("checking timeframe expiration from csv");
+                System.out.println("Checking timeframe expiration from csv");
                 while ((line = bReader.readLine()) != null) {
                     if (line != null)
                     {
@@ -138,7 +135,6 @@ public class CsvHandler {
 
     public List<String> getList(){
         return expiredPlates;
-    }//added yesterday *********************************
-
+    }
 
 }//end of class

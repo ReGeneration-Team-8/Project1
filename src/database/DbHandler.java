@@ -1,7 +1,6 @@
 package database;
 
-//import validation.CheckInput;
-//import ErrorHandling.Validator;
+import model.Vehicles;
 import utilities.DateCalculations;
 import utilities.Sort;
 
@@ -10,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -18,6 +16,7 @@ public class DbHandler {
 
     private List<String> expiredPlates = new ArrayList<String>();
     private List<String> plateList = new ArrayList<String>();
+    private List<Vehicles> listOfVehicles = new ArrayList<Vehicles>();
     // queries for owners table
     /* insert statement using prepared statements */
 
@@ -120,6 +119,11 @@ public class DbHandler {
         }
     }
 
+
+    /////////////////// Get plates from the database and save them to an arrayList, which we sort.
+
+
+
     public void getPlate()
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
@@ -145,6 +149,44 @@ public class DbHandler {
         }
 
     }
+
+    /////////////////// Get all data from Vehicles table and we insert to an arraylist. Each row is an object of type Vehicle
+    /////////////////// We sort the objects by plate
+
+    public void getDataFromVehicles()
+    {
+        MySqlConnect mySqlConnect = new MySqlConnect();
+        String getPlateSql = "SELECT * FROM vehicles ORDER BY ownerId";
+        String plate = "";
+        String ownerId = "";
+        String date = "";
+        try {
+            mySqlConnect.connect().setAutoCommit(false);
+            Statement stmt = mySqlConnect.connect().createStatement();
+            ResultSet rs = stmt.executeQuery(getPlateSql);
+            while(rs.next())
+            {
+                plate = rs.getString("plate");
+                ownerId = rs.getString("ownerId");
+                date = rs.getString("activationDate");
+                Vehicles tempVehicle = new Vehicles();
+                tempVehicle.setPlate(plate);
+                tempVehicle.setOwnerId(ownerId);
+                tempVehicle.setActivationDate(date);
+                listOfVehicles.add(tempVehicle);
+            }
+            Sort sorting = new Sort();
+            sorting.bubbleSortObjects(listOfVehicles);
+            mySqlConnect.connect().commit();
+            //return plate;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //return "error - not found";
+        }
+
+    }
+
+
 
 
     public void getVehicles(double fine)
@@ -179,7 +221,7 @@ public class DbHandler {
                     }
                     else
                     {
-                        System.out.println("The owner with SCN: "+ tempOwnerId + " has to pay " + String.format( "%.2f", counter*fine ) +
+                        System.out.println("The owner with SSN: "+ tempOwnerId + " has to pay " + String.format( "%.2f", counter*fine ) +
                                 " bitcoins for his uninsured vehicles");
                         tempOwnerId = ownerId;
                         counter = 1;
@@ -199,6 +241,7 @@ public class DbHandler {
     public List<String> getListOfPlates(){
         return plateList;
     }
+    public List<Vehicles> getListOfVehicles(){return listOfVehicles;}
 
 
 }
