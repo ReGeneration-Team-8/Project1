@@ -152,7 +152,7 @@ public class DateCalculations {
     public boolean chechIfDateExists(String date){      //checks if
         boolean returnValue = true;
         String[] dateFragments = date.split("/");
-        System.out.println(dateFragments.length);
+        //System.out.println(dateFragments.length);
         if(dateFragments[1].equals("4")||dateFragments[1].equals("04") || dateFragments[1].equals("6")
                 ||dateFragments[1].equals("06")||dateFragments[1].equals("9")
                 || dateFragments[1].equals("09")||dateFragments[1].equals("11")){
