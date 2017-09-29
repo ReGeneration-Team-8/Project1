@@ -18,10 +18,10 @@ public class Menu {
     boolean isTrue = false;
     private CheckInput check = new CheckInput();
     private DbHandler dbHandler = new DbHandler();
-    private CsvHandler csvHandler = new CsvHandler();//we use it on 1 and 4,(the change i made) - //added yesterday *********************************
+    private CsvHandler csvHandler = new CsvHandler();
     private boolean exitStatus = true;
 
-    public void menuPrint(){
+    public void menuPrint(){            //prints the main menu
 
         System.out.println("==============================");
         System.out.println("|             MENU           |");
@@ -37,6 +37,7 @@ public class Menu {
 
     public void menuChoice(){
         Scanner inputNumber = new Scanner(System.in);
+
         try{
             choice = inputNumber.nextInt();
         }
@@ -65,6 +66,7 @@ public class Menu {
                     System.out.println("Give a valid timeframe");
                     Scanner inputTimeFrame = new Scanner(System.in);
                     int timeToCheck = 0;
+
                     try{
                         timeToCheck = inputTimeFrame.nextInt();
                         timeFrame = check.matchTimeFrame(timeToCheck);
@@ -86,6 +88,7 @@ public class Menu {
                 System.out.println("==============================");
 
                 Scanner inputNumber2 = new Scanner(System.in);
+
                 try{
                     choice2 = inputNumber2.nextInt();
                 }
@@ -114,6 +117,7 @@ public class Menu {
                     csvHandler.getList().clear();
                     }else{
                     BufferedWriter br = null;
+
                     try {
                         br = new BufferedWriter(new FileWriter("UninsuredVehicles.csv"));
                     } catch (IOException e) {
@@ -147,21 +151,10 @@ public class Menu {
 
             case 3:
                 System.out.println("Plate numbers in alphanumerical order\n");
-
-                /////////// for arraList of plates
-                /*dbHandler.getPlate();
-                for (String plate:dbHandler.getListOfPlates()){
-                    System.out.println(plate);
-                }
-                dbHandler.getListOfPlates().clear();
-                exitMessage();*/
-
-                /////////// for arraList of objects of type Vehicles
-
                 dbHandler.getDataFromVehicles();
                 System.out.println("Plate Number\tSSN \t\t\tActivationDate\n");
                 for(Vehicles objectVehicle:dbHandler.getListOfVehicles()){
-                    System.out.println(objectVehicle.getPlate()+ "    \t" + objectVehicle.getOwnerId() + "\t\t" + objectVehicle.getActivationDate());
+                    System.out.println(objectVehicle.getPlate()+ "\t\t" + objectVehicle.getOwnerId() + "\t\t" + objectVehicle.getActivationDate());
                 }
                 dbHandler.getListOfVehicles().clear();
                 exitMessage();
@@ -172,6 +165,7 @@ public class Menu {
                 outer:
                 while (fine <0) {
                     Scanner scFine = new Scanner(System.in);
+
                     try{
                         fine = scFine.nextDouble();
                         if (fine < 0) {

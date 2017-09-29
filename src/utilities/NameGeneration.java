@@ -3,12 +3,10 @@ package utilities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NameGeneration {
+public class NameGeneration {               //generates random strings.
     final String lexicon = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     final java.util.Random rand = new java.util.Random();
-
-    // consider using a Map<String,Boolean> to say whether the identifier is being used or not
     final Set<String> identifiers = new HashSet<String>();
 
     public String randomIdentifier() {

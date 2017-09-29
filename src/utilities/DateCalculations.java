@@ -5,42 +5,46 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class DateCalculations {
 
-    public String calculateExpirationDate(String activationDate) // months are indexed from 0, not 1 - activationDate must be of value πχ 4/6/2017
+    public String calculateExpirationDate(String activationDate)        //calculates the expiration date
     {
         String expirationDate = "";
-        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");   //creates a format for date
         Date date = null;
+
         try {
-            date = dateFormat.parse(activationDate);
+            date = dateFormat.parse(activationDate);          //transform date to the desirable format
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         Calendar now = Calendar.getInstance();
         now.setTime(date);
         expirationDate += now.get(Calendar.DATE) + "/";
         int month = now.get(Calendar.MONTH);
-        if (month > 4) {
+
+        if (month > 4) {                                    //for months after May the year of expiration date has to be changed
             now.add(Calendar.YEAR, 1);
             switch (month) {
-                case 5:
+                case 5:                                     //June -> December
                     now.set(Calendar.MONTH, 11);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
-                case 6:
+                case 6:                                     //July -> January
                     now.set(Calendar.MONTH, 0);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
-                case 7:
+                case 7:                                     //August -> February , checks if February of the new year has one more day
                     Calendar febrCal = Calendar.getInstance();
                     Date dateForFebExc = new Date();
                     febrCal.setTime(dateForFebExc);
                     febrCal.set(Calendar.DATE, 27);
                     febrCal.set(Calendar.MONTH, 1);
                     int maxNumOfDays = febrCal.getActualMaximum(Calendar.DAY_OF_MONTH);
-                    if (maxNumOfDays < now.get(Calendar.DATE)) // τσεκάρει αν ο φεβρουάριος του έτους έχει λιγότερες μέρες και το κάνει 1 Μαρτίου
+                    if (maxNumOfDays < now.get(Calendar.DATE)) //
                     {
                         expirationDate = "";
                         now.set(Calendar.DATE, 1);
@@ -68,7 +72,7 @@ public class DateCalculations {
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
             }
-        } else {
+        } else {                                            //from January to May
             now.add(Calendar.MONTH, 7);
             expirationDate += now.get(Calendar.MONTH) + "/";
         }
@@ -77,21 +81,22 @@ public class DateCalculations {
         return expirationDate;
     }
 
-    public String compareDates(String expirationDate) {
+    public String compareDates(String expirationDate) {     //compares expirationDate with current date
         DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
         Date currentDate = new Date();
         Date dateToCheck = null;
+
         try {
             dateFormat.format(currentDate);
             dateToCheck = dateFormat.parse(expirationDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         Calendar now = Calendar.getInstance();
         now.setTime(currentDate);
         Calendar expr = Calendar.getInstance();
         expr.setTime(dateToCheck);
-
         String insuranceStatus = "";
 
         if (!expr.before(now)) {
@@ -110,22 +115,23 @@ public class DateCalculations {
     }
 
 
-    public String compareDates(int timeFrame, String expirationDate) {
+    public String compareDates(int timeFrame, String expirationDate) {  //overloading compareDates because an extra argument is needed
         DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
         Date currentDate = new Date();
         Date dateToCheck = null;
+
         try {
             dateFormat.format(currentDate);
             dateToCheck = dateFormat.parse(expirationDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         Calendar now = Calendar.getInstance();
         now.setTime(currentDate);
         now.add(Calendar.DATE, timeFrame);
         Calendar expr = Calendar.getInstance();
         expr.setTime(dateToCheck);
-
         String insuranceStatus = "";
 
         if (!expr.before(now)) {
@@ -141,6 +147,28 @@ public class DateCalculations {
             insuranceStatus = "expired";
         }
         return insuranceStatus;
+    }
+
+    public boolean chechIfDateExists(String date){      //checks if
+        boolean returnValue = true;
+        String[] dateFragments = date.split("/");
+        System.out.println(dateFragments.length);
+        if(dateFragments[1].equals("4")||dateFragments[1].equals("04") || dateFragments[1].equals("6")
+                ||dateFragments[1].equals("06")||dateFragments[1].equals("9")
+                || dateFragments[1].equals("09")||dateFragments[1].equals("11")){
+            if(Integer.parseInt(dateFragments[0]) > 30){
+                returnValue = false;
+            }
+        }
+        else if(dateFragments[1].equals("2")){
+           int disekto = Integer.parseInt(dateFragments[2]) % 4;
+           if(disekto == 0 && Integer.parseInt(dateFragments[0]) > 29){
+                   returnValue = false;
+           }else if (Integer.parseInt(dateFragments[0]) > 28){
+               returnValue = false;
+           }
+        }
+        return returnValue;
     }
 }
 
