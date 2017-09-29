@@ -14,6 +14,7 @@ public class CheckInput {
             System.out.println("You have entered a valid plate number\n");
             return true;
         }else{
+            System.out.println("Enter a valid plate number (e.g.: ABC-1234)");
             return false;
         }
     }
@@ -42,7 +43,7 @@ public class CheckInput {
 
     public int matchTimeFrame(int timeFrame){        //checks if the user typed a positive timeframe
         if (timeFrame < 0) {
-            System.out.println("Give number of days (positive)");
+            System.out.println("You have entered a negative number of days");
             timeFrame = -1;
         }
         return timeFrame;

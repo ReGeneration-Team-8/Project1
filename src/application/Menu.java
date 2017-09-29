@@ -51,8 +51,8 @@ public class Menu {
         }
         switch (choice) {
             case 1:
+                System.out.println("Enter the plate number");
                 do {
-                    System.out.println("Enter the plate number");
                     isTrue = check.matchPlate();
                 }while(isTrue == false);
                 String status = dbHandler.getActivationDate(check.getStr());
@@ -101,7 +101,7 @@ public class Menu {
                     choice2 = check.matchInt2();
                 }
                 if(choice2 == 1){
-                    int i= 1;
+                    int i=1;
                     System.out.println("\nDatabase results: \n");
                     for (String plate:dbHandler.getList()){
                         System.out.println(i + ". " + plate);
@@ -116,6 +116,7 @@ public class Menu {
                     }
                     csvHandler.getList().clear();
                     }else{
+                    System.out.println("Exporting uninsured vehicles in \"UninsuredVehicles.csv\"\n");
                     BufferedWriter br = null;
 
                     try {
@@ -145,6 +146,7 @@ public class Menu {
                             e.printStackTrace();
                         }
                     }
+                    System.out.println("Uninsured vehicles exported in \"UninsuredVehicles.csv\"");
                 }
                 exitMessage();
                 break;
@@ -174,7 +176,7 @@ public class Menu {
                         }
                         dbHandler.getVehicles(fine);
                     }catch (InputMismatchException e){
-                        System.out.println("Please enter a valid fine");
+                        System.out.println("Please enter a valid fine (numeric)");
                     }
                 }
                 exitMessage();
