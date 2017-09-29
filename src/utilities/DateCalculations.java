@@ -19,8 +19,8 @@ public class DateCalculations {
             e.printStackTrace();
         }
         Calendar now = Calendar.getInstance();
-        now.setTime(date);
         expirationDate += now.get(Calendar.DATE) + "/";
+        now.setTime(date);
         int month = now.get(Calendar.MONTH);
         if (month > 4) {
             now.add(Calendar.YEAR, 1);
