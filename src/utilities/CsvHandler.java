@@ -35,6 +35,7 @@ public class CsvHandler {           //class that contains methods to read csv fi
                         if(dateCalculations.chechIfDateExists(array[2]) == false){
                             continue outer;
                         }
+                        //geiaaaaa
                         else {
                             if (distinctOwnerId.isEmpty()) {
                                 String rndName = nameGeneration.randomIdentifier();
