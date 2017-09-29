@@ -30,7 +30,7 @@ public class Vehicles implements Comparable{
         this.activationDate = activationDate;
     }
 
-    private int compare(String s1, String s2){
+    private int compare(String s1, String s2){          //compare 2 strings character by character
         int result = 0;
         for (int i = 0; i < s1.length(); i++){
             int a = s1.charAt(i);
@@ -48,7 +48,7 @@ public class Vehicles implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Object o) {        //we implement compareTo from interface Comparable
         int result = 0;
         try {
             Vehicles v = (Vehicles) o;

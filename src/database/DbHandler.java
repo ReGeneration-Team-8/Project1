@@ -12,18 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DbHandler {
+public class DbHandler {            //manipulates database
 
     private List<String> expiredPlates = new ArrayList<String>();
     private List<String> plateList = new ArrayList<String>();
     private List<Vehicles> listOfVehicles = new ArrayList<Vehicles>();
-    // queries for owners table
-    /* insert statement using prepared statements */
 
     public void insertVehicle(String plate, String activationDate, String ownerId)
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String insertVehicleSql = "INSERT  INTO Vehicles (plate, activationDate, ownerId) VALUES (?,?,?) ";
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             PreparedStatement insertVehiclePrepared = mySqlConnect.connect().prepareStatement(insertVehicleSql);
@@ -35,13 +34,14 @@ public class DbHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        mySqlConnect.disconnect();
     }
 
     public void insertOwner(String ownerId, String firstName, String lastName)
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String insertOwnerSql = "INSERT  INTO Owners (ownerId, firstName, lastName) VALUES (?,?,?) ";
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             PreparedStatement insertOwnerPrepared = mySqlConnect.connect().prepareStatement(insertOwnerSql);
@@ -53,15 +53,16 @@ public class DbHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        mySqlConnect.disconnect();
     }
 
-    public String getActivationDate(String plate)//now handles the case where the plate was not found in db
+    public String getActivationDate(String plate)   //handles the case where the plate was not found in db
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String getActivationDateSql = "SELECT activationDate FROM vehicles WHERE plate = ?";
         String activationDate = "";
         String insuranceStatus = "";
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             PreparedStatement getActivationDatePrepared = mySqlConnect.connect().prepareStatement(getActivationDateSql);
@@ -85,10 +86,11 @@ public class DbHandler {
             e.printStackTrace();
             return "error - not found";
         }
+        mySqlConnect.disconnect();
         return insuranceStatus;
     }
 
-    public String getActivationDates(int timeFrame)
+    public String getActivationDates(int timeFrame)    //returns all plates from the database and validates them by timeframe
     {
 
         MySqlConnect mySqlConnect = new MySqlConnect();
@@ -96,6 +98,7 @@ public class DbHandler {
         String activationDate = "";
         String insuranceStatus = "";
         String expiredPlate = "";
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             Statement stmt = mySqlConnect.connect().createStatement();
@@ -112,6 +115,7 @@ public class DbHandler {
                 }
             }
             mySqlConnect.connect().commit();
+            mySqlConnect.disconnect();
             return insuranceStatus;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,47 +123,15 @@ public class DbHandler {
         }
     }
 
-
-    /////////////////// Get plates from the database and save them to an arrayList, which we sort.
-
-
-
-    public void getPlate()
-    {
-        MySqlConnect mySqlConnect = new MySqlConnect();
-        String getPlateSql = "SELECT plate FROM vehicles ORDER BY ownerId";
-        String plate = "";
-        try {
-            mySqlConnect.connect().setAutoCommit(false);
-            Statement stmt = mySqlConnect.connect().createStatement();
-            ResultSet rs = stmt.executeQuery(getPlateSql);
-
-            while(rs.next())
-            {
-                plate = rs.getString("plate");
-                plateList.add(plate);
-            }
-            Sort sorting = new Sort();
-            sorting.bubbleSort((ArrayList<String>) plateList);
-            mySqlConnect.connect().commit();
-            //return plate;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            //return "error - not found";
-        }
-
-    }
-
-    /////////////////// Get all data from Vehicles table and we insert to an arraylist. Each row is an object of type Vehicle
-    /////////////////// We sort the objects by plate
-
-    public void getDataFromVehicles()
+    public void getDataFromVehicles()   // Get all data from Vehicles table and insert to an arraylist.
+                                        // Each row is an object of type Vehicle. We sort the objects by plate
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String getPlateSql = "SELECT * FROM vehicles ORDER BY ownerId";
         String plate = "";
         String ownerId = "";
         String date = "";
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             Statement stmt = mySqlConnect.connect().createStatement();
@@ -178,18 +150,14 @@ public class DbHandler {
             Sort sorting = new Sort();
             sorting.bubbleSortObjects(listOfVehicles);
             mySqlConnect.connect().commit();
-            //return plate;
         } catch (SQLException e) {
             e.printStackTrace();
-            //return "error - not found";
         }
-
+        mySqlConnect.disconnect();
     }
 
-
-
-
-    public void getVehicles(double fine)
+    public void getVehicles(double fine)    //Get all data from Vehicles table and calculates fine for each owner's expired vehicles.
+                                            //We just print the results
     {
         MySqlConnect mySqlConnect = new MySqlConnect();
         String getVehiclesSql = "SELECT * FROM vehicles ORDER BY ownerId";
@@ -200,6 +168,7 @@ public class DbHandler {
         String expiredPlate = "";
         String tempOwnerId = "";
         int counter = 1;
+
         try {
             mySqlConnect.connect().setAutoCommit(false);
             Statement stmt = mySqlConnect.connect().createStatement();
@@ -232,14 +201,12 @@ public class DbHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        mySqlConnect.disconnect();
     }
 
 
     public List<String> getList(){
         return expiredPlates;
-    }
-    public List<String> getListOfPlates(){
-        return plateList;
     }
     public List<Vehicles> getListOfVehicles(){return listOfVehicles;}
 

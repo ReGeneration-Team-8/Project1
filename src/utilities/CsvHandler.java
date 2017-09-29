@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CsvHandler {
+public class CsvHandler {           //class that contains methods to read csv file
 
     private DbHandler dbHandler;
     private NameGeneration nameGeneration;
@@ -21,29 +21,34 @@ public class CsvHandler {
         dbHandler = new DbHandler();
         nameGeneration = new NameGeneration();
         List<String> distinctOwnerId = new ArrayList<String>();
+
         try {
             BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
             String line = "";
 
             try {
+                outer:
                 while ((line = bReader.readLine()) != null) {
                     if (line != null)
                     {
                         String[] array = line.split(";+");
-                        //System.out.println(array.length);
-                        if(distinctOwnerId.isEmpty()) {
-                            String rndName = nameGeneration.randomIdentifier();
-                            String rndLastName = nameGeneration.randomIdentifier();
-                            distinctOwnerId.add(array[1]);
-                            dbHandler.insertOwner(array[1], rndName, rndLastName);
+                        if(dateCalculations.chechIfDateExists(array[2]) == false){
+                            continue outer;
                         }
-                        else if(!distinctOwnerId.contains(array[1])){
-                            String rndName = nameGeneration.randomIdentifier();
-                            String rndLastName = nameGeneration.randomIdentifier();
-                            distinctOwnerId.add(array[1]);
-                            dbHandler.insertOwner(array[1], rndName, rndLastName);
+                        else {
+                            if (distinctOwnerId.isEmpty()) {
+                                String rndName = nameGeneration.randomIdentifier();
+                                String rndLastName = nameGeneration.randomIdentifier();
+                                distinctOwnerId.add(array[1]);
+                                dbHandler.insertOwner(array[1], rndName, rndLastName);
+                            } else if (!distinctOwnerId.contains(array[1])) {
+                                String rndName = nameGeneration.randomIdentifier();
+                                String rndLastName = nameGeneration.randomIdentifier();
+                                distinctOwnerId.add(array[1]);
+                                dbHandler.insertOwner(array[1], rndName, rndLastName);
+                            }
+                            dbHandler.insertVehicle(array[0], array[2], array[1]);
                         }
-                        dbHandler.insertVehicle(array[0], array[2], array[1]);
                     }
                 }
                 if (bReader == null)
@@ -57,11 +62,11 @@ public class CsvHandler {
             System.out.println("File Not Found");
 
         }
-    } //End of Method
+    }
 
-    //checks the csv to validate the plate
-    public void validatePlateFromCsv(String plateToValidate) {
+    public void validatePlateFromCsv(String plateToValidate) {      //checks the csv to validate the plate
         String validationResult = "";
+
         try {
             BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
             String line = "";
@@ -96,9 +101,9 @@ public class CsvHandler {
         } catch (FileNotFoundException nf) {
             System.out.println("File Not Found");
         }
-    } //End of readCsvAsDatabase Method
+    }
 
-    public void checkTimeframeExpirationFromCsv(int timeFrame)
+    public void checkTimeframeExpirationFromCsv(int timeFrame)   //checks the csv to get plates which have been expired
     {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader("VehiclesData.csv"));
@@ -119,7 +124,7 @@ public class CsvHandler {
                         if (insuranceStatus.equals("expired")){
                             expiredPlates.add(expiredPlate);
                         }
-                    }//end if
+                    }
                 }
                 if (bReader == null)
                 {
@@ -137,4 +142,4 @@ public class CsvHandler {
         return expiredPlates;
     }
 
-}//end of class
+}

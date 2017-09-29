@@ -1,6 +1,6 @@
 package model;
 
-public class Owners {
+public class Owners {       //POJO class with setters and getters
 
     private int ownerId;
     private String firstName;

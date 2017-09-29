@@ -13,11 +13,9 @@ public class MySqlConnect {
     private static final String PASSWORD = "";
     private static final String MAX_POOL = "100"; // return results limit
 
-    // initialization
     private Connection connection;
     private Properties properties;
 
-    // create properties
     private Properties getProperties() {
         if (properties == null) {
             properties = new Properties();
@@ -28,8 +26,8 @@ public class MySqlConnect {
         return properties;
     }
 
-    // connect to database
-    public Connection connect() {
+
+    public Connection connect() {    // connect to database
         if (connection == null) {
             try {
                 Class.forName(DATABASE_DRIVER);
@@ -42,8 +40,8 @@ public class MySqlConnect {
         return connection;
     }
 
-    // disconnect database
-    public void disconnect() {
+
+    public void disconnect() {    // disconnect database
         if (connection != null) {
             try {
                 connection.close();
