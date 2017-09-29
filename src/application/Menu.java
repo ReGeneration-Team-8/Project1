@@ -115,7 +115,7 @@ public class Menu {
                         i++;
                     }
                     csvHandler.getList().clear();
-                    }else{
+                }else{
                     System.out.println("Exporting uninsured vehicles in \"UninsuredVehicles.csv\"\n");
                     BufferedWriter br = null;
 
@@ -142,6 +142,7 @@ public class Menu {
                         try {
                             br.close(); // close will automatically flush the data
                             dbHandler.getList().clear();
+                            csvHandler.getList().clear();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
