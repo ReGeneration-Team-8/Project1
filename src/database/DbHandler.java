@@ -68,7 +68,7 @@ public class DbHandler {            //manipulates database
             PreparedStatement getActivationDatePrepared = mySqlConnect.connect().prepareStatement(getActivationDateSql);
             getActivationDatePrepared.setString(1, plate);
             ResultSet rs = getActivationDatePrepared.executeQuery();
-            if (!rs.isBeforeFirst() ) {//checks if result set is empty - //added yesterday *********************************
+            if (!rs.isBeforeFirst() ) {//checks if result set is empty
                 System.out.println("Plate not found in database");
             }
             else

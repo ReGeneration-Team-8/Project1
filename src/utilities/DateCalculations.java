@@ -22,52 +22,60 @@ public class DateCalculations {
         }
 
         Calendar now = Calendar.getInstance();
-        expirationDate += now.get(Calendar.DATE) + "/";
         now.setTime(date);
+        expirationDate += now.get(Calendar.DATE) + "/";
         int month = now.get(Calendar.MONTH);
 
         if (month > 4) {                                    //for months after May the year of expiration date has to be changed
-            now.add(Calendar.YEAR, 1);
             switch (month) {
                 case 5:                                     //June -> December
                     now.set(Calendar.MONTH, 11);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
                 case 6:                                     //July -> January
+                    now.add(Calendar.YEAR, 1);
                     now.set(Calendar.MONTH, 0);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
                 case 7:                                     //August -> February , checks if February of the new year has one more day
+                    now.add(Calendar.YEAR, 1);
                     Calendar febrCal = Calendar.getInstance();
                     Date dateForFebExc = new Date();
                     febrCal.setTime(dateForFebExc);
-                    febrCal.set(Calendar.DATE, 27);
+                    febrCal.set(Calendar.DAY_OF_MONTH, 27);
                     febrCal.set(Calendar.MONTH, 1);
                     int maxNumOfDays = febrCal.getActualMaximum(Calendar.DAY_OF_MONTH);
-                    if (maxNumOfDays < now.get(Calendar.DATE)) //
+                    if (maxNumOfDays < now.get(Calendar.DAY_OF_MONTH)) //
                     {
                         expirationDate = "";
-                        now.set(Calendar.DATE, 1);
-                        expirationDate += now.get(Calendar.DATE) + "/";
+                        now.set(Calendar.DAY_OF_MONTH, 1);
+                        expirationDate += now.get(Calendar.DAY_OF_MONTH) + "/";
                         now.set(Calendar.MONTH, 2);
                         expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     }
-                    now.set(Calendar.MONTH, 1);
-                    expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
+                    else
+                    {
+                        now.set(Calendar.MONTH, 1);
+                        expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
+                    }
                     break;
                 case 8:
+                    now.add(Calendar.YEAR, 1);
                     now.set(Calendar.MONTH, 2);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
                 case 9:
+                    now.add(Calendar.YEAR, 1);
                     now.set(Calendar.MONTH, 3);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
                 case 10:
+                    now.add(Calendar.YEAR, 1);
                     now.set(Calendar.MONTH, 4);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
                 case 11:
+                    now.add(Calendar.YEAR, 1);
                     now.set(Calendar.MONTH, 5);
                     expirationDate += (now.get(Calendar.MONTH) + 1) + "/";
                     break;
@@ -77,7 +85,7 @@ public class DateCalculations {
             expirationDate += now.get(Calendar.MONTH) + "/";
         }
         expirationDate += now.get(Calendar.YEAR);
-       // System.out.println("Activation date is : " + activationDate + " and Expiration date is : " + expirationDate);
+        //System.out.println("Activation date is : " + activationDate + " and Expiration date is : " + expirationDate);
         return expirationDate;
     }
 
@@ -149,7 +157,7 @@ public class DateCalculations {
         return insuranceStatus;
     }
 
-    public boolean chechIfDateExists(String date){      //checks if
+    public boolean chechIfDateExists(String date){      //checks if date is a valid date (days)
         boolean returnValue = true;
         String[] dateFragments = date.split("/");
         //System.out.println(dateFragments.length);
@@ -161,12 +169,12 @@ public class DateCalculations {
             }
         }
         else if(dateFragments[1].equals("2")){
-           int disekto = Integer.parseInt(dateFragments[2]) % 4;
-           if(disekto == 0 && Integer.parseInt(dateFragments[0]) > 29){
-                   returnValue = false;
-           }else if (Integer.parseInt(dateFragments[0]) > 28){
-               returnValue = false;
-           }
+            int disekto = Integer.parseInt(dateFragments[2]) % 4;
+            if(disekto == 0 && Integer.parseInt(dateFragments[0]) > 29){
+                returnValue = false;
+            }else if (Integer.parseInt(dateFragments[0]) > 28){
+                returnValue = false;
+            }
         }
         return returnValue;
     }
