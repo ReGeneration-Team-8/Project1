@@ -126,6 +126,7 @@ public class CsvHandler {           //class that contains methods to read csv fi
                         }
                     }
                 }
+                System.out.println("\nThere are " + expiredPlates.size() + " uninsured vehicles (from Csv)");
                 if (bReader == null)
                 {
                     bReader.close();

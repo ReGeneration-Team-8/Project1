@@ -76,9 +76,9 @@ public class Menu {
                         timeFrame = -1;
                     }
                 }while(timeFrame == -1);
-                dbHandler.getActivationDates(timeFrame);
                 csvHandler.checkTimeframeExpirationFromCsv(timeFrame);
-                System.out.println("\nThere are " + dbHandler.getList().size() + " uninsured vehicles\n");
+                dbHandler.getActivationDates(timeFrame);
+                System.out.println("\nThere are " + dbHandler.getList().size() + " uninsured vehicles (from Database)\n");
                 System.out.println("==============================");
                 System.out.println("|        Export Format       |");
                 System.out.println("==============================");

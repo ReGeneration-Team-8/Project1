@@ -98,7 +98,7 @@ public class DbHandler {            //manipulates database
         String activationDate = "";
         String insuranceStatus = "";
         String expiredPlate = "";
-
+        System.out.println("\nChecking timeframe expiration from Database");
         try {
             mySqlConnect.connect().setAutoCommit(false);
             Statement stmt = mySqlConnect.connect().createStatement();
